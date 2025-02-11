@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="header"></div>  <!-- Header sẽ được load tại đây -->
+    <div id="navbar"></div>  <!-- Navbar sẽ được load tại đây -->
+
+    <div class="main-content">
+        <div class="main-content">
+            <header>
+                <h2>Dashboard</h2>
+                <div class="user-info">
+                    <span>Anika Agrawal</span>
+                    <img src="profile.jpg" alt="User">
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <div class="banner">
+                <img src="banner.jpg" alt="Banner">
+            </div>
+
+            <!-- Charts & Stats -->
+            <div class="stats-container">
+                <div class="chart-box">
+                    <canvas id="ticketSoldPerMovie"></canvas>
+                </div>
+                <div class="chart-box">
+                    <canvas id="ticketSold"></canvas>
+                </div>
+            </div>
+
+            <!-- Ticket Sold & Revenue -->
+            <div class="summary">
+                <div class="card">
+                    <h3>Total Ticket Sold</h3>
+                    <div class="numbers">
+                        <div>150 <span>DAY</span></div>
+                        <div>5000 <span>MONTH</span></div>
+                        <div>48000 <span>YEAR</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Revenue</h3>
+                    <div class="numbers">
+                        <div>150 <span>DAY</span></div>
+                        <div>5000 <span>MONTH</span></div>
+                        <div>48000 <span>YEAR</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js\components.js"></script>
+    <script src="js\scripts.js"></script>
+</body>
+</html>
