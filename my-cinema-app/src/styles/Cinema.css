@@ -1,0 +1,45 @@
+.cinema-container {
+    padding: 20px;
+    background-color: #f8f9fc;
+    min-height: 100vh;
+  }
+  
+  .cinema-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cinema-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .search-bar {
+    width: 300px;
+  }
+  
+  .cinema-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .cinema-table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cinema-table th,
+  .cinema-table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .cinema-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  

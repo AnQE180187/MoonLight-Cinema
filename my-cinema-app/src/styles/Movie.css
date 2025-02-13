@@ -1,0 +1,93 @@
+.movie-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .movie-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .movie-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .movie-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    width: 300px;
+  }
+  
+  .movie-table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .movie-table thead {
+    background-color: #dc3545;
+    color: white;
+    text-align: center;
+  }
+  
+  .movie-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .movie-table th,
+  .movie-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+  }
+  
+  .movie-table .btn {
+    padding: 5px 10px;
+  }
+  
+  .movie-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Modal Styling */
+  .modal-content {
+    border-radius: 8px;
+  }
+  
+  .modal-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .modal-body input {
+    margin-bottom: 10px;
+  }
+  
+  .modal-footer .btn {
+    padding: 8px 15px;
+  }
+  .movie-poster {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .poster-preview {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    margin-top: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+  }
+  
