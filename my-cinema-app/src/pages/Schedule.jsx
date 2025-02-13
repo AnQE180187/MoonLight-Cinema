@@ -5,30 +5,45 @@ import "../styles/Schedule.css";
 
 const Schedule = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [schedules, setSchedules] = useState([
+    { id: 1, movie: "Avengers: Endgame", room: "Room 1", startTime: "2024-02-15 14:00", endTime: "2024-02-15 16:30" },
+    { id: 2, movie: "Inception", room: "Room 2", startTime: "2024-02-15 17:00", endTime: "2024-02-15 19:20" },
+    { id: 3, movie: "The Dark Knight", room: "Room 3", startTime: "2024-02-15 20:00", endTime: "2024-02-15 22:30" },
+  ]);
   const [showModal, setShowModal] = useState(false);
   const [editingSchedule, setEditingSchedule] = useState(null);
 
-  const schedules = [
-    { id: 1001, movie: "Avengers: Endgame", room: "Room 1", start_time: "2024-02-15 14:00", end_time: "2024-02-15 16:30" },
-    { id: 1002, movie: "Joker", room: "Room 2", start_time: "2024-02-16 18:00", end_time: "2024-02-16 20:30" },
-    { id: 1003, movie: "Inception", room: "Room 3", start_time: "2024-02-17 20:00", end_time: "2024-02-17 22:30" },
-  ];
+  const handleDelete = (id) => {
+    setSchedules(schedules.filter(schedule => schedule.id !== id));
+  };
 
-  const handleShowModal = (schedule = null) => {
+  const handleEdit = (schedule) => {
     setEditingSchedule(schedule);
     setShowModal(true);
   };
 
-  const handleCloseModal = () => {
-    setEditingSchedule(null);
+  const handleSave = () => {
+    if (!editingSchedule?.movie || !editingSchedule?.room || !editingSchedule?.startTime || !editingSchedule?.endTime) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    if (editingSchedule.id) {
+      setSchedules(schedules.map(s => (s.id === editingSchedule.id ? editingSchedule : s)));
+    } else {
+      const newSchedule = { ...editingSchedule, id: schedules.length + 1 };
+      setSchedules([...schedules, newSchedule]);
+    }
+
     setShowModal(false);
+    setEditingSchedule(null);
   };
 
   return (
     <div className="schedule-container">
-      <h2 className="schedule-title">Schedule</h2>
+      <h2 className="schedule-title">Schedules</h2>
 
-      {/* Search & Actions */}
+      {/* Search & Add */}
       <div className="schedule-header">
         <InputGroup className="search-bar">
           <Form.Control
@@ -41,9 +56,8 @@ const Schedule = () => {
             <Search size={18} />
           </Button>
         </InputGroup>
-
-        <div className="schedule-actions">
-          <Button variant="danger" onClick={() => handleShowModal()}>
+        <div classname="schedule-action">
+          <Button variant="danger" onClick={() => { setEditingSchedule({}); setShowModal(true); }}>
             <FilePlus size={18} className="me-2" />
             Add Schedule
           </Button>
@@ -72,13 +86,13 @@ const Schedule = () => {
               <td>{schedule.id}</td>
               <td>{schedule.movie}</td>
               <td>{schedule.room}</td>
-              <td>{schedule.start_time}</td>
-              <td>{schedule.end_time}</td>
+              <td>{schedule.startTime}</td>
+              <td>{schedule.endTime}</td>
               <td>
-                <Button variant="outline-secondary" className="me-2" onClick={() => handleShowModal(schedule)}>
+                <Button variant="outline-secondary" className="me-2" onClick={() => handleEdit(schedule)}>
                   <Edit size={18} />
                 </Button>
-                <Button variant="outline-danger">
+                <Button variant="outline-danger" onClick={() => handleDelete(schedule.id)}>
                   <Trash2 size={18} />
                 </Button>
               </td>
@@ -98,40 +112,55 @@ const Schedule = () => {
         <Pagination.Last />
       </Pagination>
 
-      {/* Create/Edit Schedule Modal */}
-      <Modal show={showModal} onHide={handleCloseModal} centered>
+      {/* Modal for Add/Edit Schedule */}
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{editingSchedule ? "Edit Schedule" : "Add Schedule"}</Modal.Title>
+          <Modal.Title>{editingSchedule?.id ? "Edit Schedule" : "Add Schedule"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Movie</Form.Label>
-              <Form.Control type="text" placeholder="Enter movie name" defaultValue={editingSchedule?.movie || ""} />
+              <Form.Control
+                type="text"
+                value={editingSchedule?.movie || ""}
+                onChange={(e) => setEditingSchedule(prev => ({ ...prev, movie: e.target.value }))}
+              />
             </Form.Group>
-
             <Form.Group className="mb-3">
               <Form.Label>Room</Form.Label>
-              <Form.Control type="text" placeholder="Enter room name" defaultValue={editingSchedule?.room || ""} />
+              <Form.Control
+                type="text"
+                value={editingSchedule?.room || ""}
+                onChange={(e) => setEditingSchedule(prev => ({ ...prev, room: e.target.value }))}
+              />
             </Form.Group>
-
-            <div className="d-flex gap-3">
-              <Form.Group className="mb-3 flex-fill">
-                <Form.Label>Start Time</Form.Label>
-                <Form.Control type="datetime-local" defaultValue={editingSchedule?.start_time || ""} />
-              </Form.Group>
-
-              <Form.Group className="mb-3 flex-fill">
-                <Form.Label>End Time</Form.Label>
-                <Form.Control type="datetime-local" defaultValue={editingSchedule?.end_time || ""} />
-              </Form.Group>
-            </div>
-
-            <Button variant="primary" className="w-100">
-              {editingSchedule ? "Update Schedule" : "Create Schedule"}
-            </Button>
+            <Form.Group className="mb-3">
+              <Form.Label>Start Time</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                value={editingSchedule?.startTime || ""}
+                onChange={(e) => setEditingSchedule(prev => ({ ...prev, startTime: e.target.value }))}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>End Time</Form.Label>
+              <Form.Control
+                type="datetime-local"
+                value={editingSchedule?.endTime || ""}
+                onChange={(e) => setEditingSchedule(prev => ({ ...prev, endTime: e.target.value }))}
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleSave}>
+            Save
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

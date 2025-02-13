@@ -35,7 +35,13 @@ function Dashboard() {
           <img className="d-block w-100" src="PosterPhim\Poster_Nhà Bà Nữ.jpg" alt="Banner 1" />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src="PosterPhim\Poster_Nhà Bà Nữ.jpg" alt="Banner 2" />
+          <img className="d-block w-100" src="PosterPhim\Poster_Lật Mặt 7.jpg" alt="Banner 2" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src="PosterPhim\Poster_Quỷ Ăn Tạng.jpg" alt="Banner 33" />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img className="d-block w-100" src="PosterPhim\Poster_Nụ Hôn Bạc Tỷ.jpg" alt="Banner 4" />
         </Carousel.Item>
       </Carousel>
       {/* Thống kê vé bán */}

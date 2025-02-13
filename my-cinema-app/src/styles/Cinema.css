@@ -25,21 +25,12 @@
     gap: 10px;
   }
   
-  .cinema-table {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .cinema-table th,
-  .cinema-table td {
-    text-align: center;
-    vertical-align: middle;
-  }
-  
+ 
   .cinema-pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
   }
-  
+  .modal-footer {
+    justify-content: right;
+  }

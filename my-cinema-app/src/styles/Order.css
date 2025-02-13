@@ -1,17 +1,18 @@
-.schedule-container {
+/* Order.css */
+.order-container {
     padding: 20px;
-    background-color: #f8f9fa;
-    min-height: 100vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .schedule-title {
+  .order-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
   }
   
-  .schedule-header {
+  .order-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,14 +23,16 @@
     width: 300px;
   }
   
-  .schedule-actions button{
+  .order-actions button {
     margin-left: 10px;
   }
   
-  
-  .schedule-pagination {
+
+  .order-pagination {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 15px;
   }
-  
+  .modal-footer {
+    justify-content: right;
+  }

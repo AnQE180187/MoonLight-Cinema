@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Modal } from "react-bootstrap";
 import { Search, FilePlus, Download, Trash2, Edit } from "lucide-react";
 import "../styles/Cinema.css";
+import "../styles/table.css";
 
 const Cinema = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -67,7 +68,7 @@ const Cinema = () => {
       </div>
 
       {/* Table */}
-      <Table bordered hover responsive className="cinema-table">
+      <Table bordered hover responsive className="table">
         <thead>
           <tr>
             <th>CINEMA ID</th>

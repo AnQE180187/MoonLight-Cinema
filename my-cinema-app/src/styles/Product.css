@@ -1,33 +1,29 @@
-.schedule-container {
+.product-container {
     padding: 20px;
-    background-color: #f8f9fa;
-    min-height: 100vh;
   }
   
-  .schedule-title {
+  .product-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
   }
-  
-  .schedule-header {
+  .product-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .product-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   
   .search-bar {
     width: 300px;
   }
   
-  .schedule-actions button{
-    margin-left: 10px;
-  }
+
   
-  
-  .schedule-pagination {
+  .product-pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;

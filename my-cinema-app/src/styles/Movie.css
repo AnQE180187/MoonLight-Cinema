@@ -24,33 +24,7 @@
     width: 300px;
   }
   
-  .movie-table {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .movie-table thead {
-    background-color: #dc3545;
-    color: white;
-    text-align: center;
-  }
-  
-  .movie-table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .movie-table th,
-  .movie-table td {
-    text-align: center;
-    vertical-align: middle;
-    padding: 10px;
-  }
-  
-  .movie-table .btn {
-    padding: 5px 10px;
-  }
-  
+
   .movie-pagination {
     display: flex;
     justify-content: center;
@@ -90,4 +64,6 @@
     border: 2px solid #ddd;
     border-radius: 5px;
   }
-  
+  .modal-footer {
+    justify-content: right;
+  }
