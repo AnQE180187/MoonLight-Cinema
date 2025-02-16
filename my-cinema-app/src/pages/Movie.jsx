@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Modal } from "react-bootstrap";
-import { Search, FilePlus, Download, Trash2, Edit, PlayCircle } from "lucide-react";
+import { Search, FilePlus, Download, Trash2, Trash, Edit, PlayCircle } from "lucide-react";
+import * as XLSX from "xlsx";
 import "../styles/Movie.css";
 import "../styles/table.css";
 
@@ -10,10 +11,12 @@ const Movie = () => {
     const [editingMovie, setEditingMovie] = useState(null);
     const [trailerUrl, setTrailerUrl] = useState("");
     const [showTrailer, setShowTrailer] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const moviesPerPage = 5;
 
     const [movies, setMovies] = useState([
         {
-            id: 1001,
+            id: 1,
             name: "Avengers: Endgame",
             genre: "Action",
             director: "Russo Brothers",
@@ -23,7 +26,7 @@ const Movie = () => {
             trailer: "https://www.youtube.com/embed/TcMBFSGVi1c"
         },
         {
-            id: 1002,
+            id: 2,
             name: "Interstellar",
             genre: "Sci-Fi",
             director: "Christopher Nolan",
@@ -76,6 +79,25 @@ const Movie = () => {
         setTrailerUrl(url);
         setShowTrailer(true);
     };
+    const filteredMovies = movies.filter(
+        (movie) =>
+            movie.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            movie.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            movie.director.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const indexOfLastMovie = currentPage * moviesPerPage;
+    const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+    const currentMovies = filteredMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const exportToExcel = () => {
+        const ws = XLSX.utils.json_to_sheet(movies);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Movies");
+        XLSX.writeFile(wb, "movies.xlsx");
+    };
 
     return (
         <div className="movie-container">
@@ -83,21 +105,19 @@ const Movie = () => {
 
             {/* Search & Filter */}
             <div className="movie-header">
-                <InputGroup className="search-bar">
-                    <Form.Control type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            <InputGroup className="search-bar">
+                    <Form.Control type="text" placeholder="Search by Name, Genre, Director" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                     <Button variant="outline-secondary">
                         <Search size={18} />
                     </Button>
                 </InputGroup>
 
                 <div className="movie-actions">
-                    <Button variant="danger" onClick={() => handleShowModal()}>
-                        <FilePlus size={18} className="me-2" />
-                        Add Movie
+                    <Button variant="success" onClick={() => handleShowModal()}>
+                        <FilePlus size={18} className="me-2" /> Add Movie
                     </Button>
-                    <Button variant="primary">
-                        <Download size={18} className="me-2" />
-                        Export to Excel
+                    <Button variant="primary" onClick={exportToExcel}>
+                        <Download size={18} className="me-2" /> Export to Excel
                     </Button>
                 </div>
             </div>
@@ -118,7 +138,7 @@ const Movie = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.map((movie) => (
+                    {currentMovies.map((movie) => (
                         <tr key={movie.id}>
                             <td>{movie.id}</td>
                             <td>
@@ -147,15 +167,13 @@ const Movie = () => {
                 </tbody>
             </Table>
 
-            <Pagination className="cinema-pagination">
-                <Pagination.First />
-                <Pagination.Prev />
-                <Pagination.Item active>{1}</Pagination.Item>
-                <Pagination.Ellipsis />
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Next />
-                <Pagination.Last />
-            </Pagination>
+            <Pagination className="movie-pagination">
+        {Array.from({ length: Math.ceil(filteredMovies.length / moviesPerPage) }, (_, index) => (
+          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </Pagination.Item>
+        ))}
+      </Pagination>
 
             {/* Modal Add/Edit Movie */}
             <Modal show={showModal} onHide={handleCloseModal}>

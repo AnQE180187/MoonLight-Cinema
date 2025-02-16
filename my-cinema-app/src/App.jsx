@@ -11,6 +11,8 @@ import Schedule from "./pages/Schedule";
 import OrderPage from "./pages/Order";
 import Ticket from "./pages/Ticket";
 import Product from "./pages/Products";
+import Customers from "./pages/Customers";
+import Equipment from "./pages/Equipment";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,6 +51,8 @@ function App() {
                     <Route path="/order" element={<OrderPage />} />
                     <Route path="/ticket" element={<Ticket />} />
                     <Route path="/product" element={<Product />} />
+                    <Route path="/customer" element={<Customers />} /> 
+                    <Route path="/equipment" element={<Equipment />} />
                     <Route path="*" element={<Navigate to="/dashboard" />} />
                   </Routes>
                 </div>

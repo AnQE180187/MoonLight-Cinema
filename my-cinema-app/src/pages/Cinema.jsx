@@ -1,66 +1,84 @@
 import React, { useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Modal } from "react-bootstrap";
-import { Search, FilePlus, Download, Trash2, Edit } from "lucide-react";
+import { Search, FilePlus, Download, Edit, Trash2 } from "lucide-react";
+import * as XLSX from "xlsx";
 import "../styles/Cinema.css";
-import "../styles/table.css";
 
 const Cinema = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [cinemas, setCinemas] = useState([
+    { id: 1, name: "Galaxy Cinema", address: "123 Main St", phone: "0123456789", rooms: 5 },
+    { id: 2, name: "Lotte Cinema", address: "456 Central Ave", phone: "0987654321", rooms: 7 },
+    { id: 3, name: "CGV Cinemas", address: "789 Broadway", phone: "0112233445", rooms: 6 },
+  ]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [editingCinema, setEditingCinema] = useState(null);
-  const [cinemas, setCinemas] = useState([
-    { id: 5001, name: "CGV", address: "19 Tô Hiến Thành, Hà Nội", phone: "024-3974-6567", rooms: 3 },
-    { id: 5002, name: "MoonLight", address: "229 Tây Sơn, Hà Nội", phone: "024-5264-6547", rooms: 9 }
-  ]);
-  const [formData, setFormData] = useState({ id: "", name: "", address: "", phone: "", rooms: "" });
+  const [newCinema, setNewCinema] = useState({ name: "", address: "", phone: "", rooms: "" });
+  const cinemasPerPage = 10;
 
-  // Mở Modal Add/Edit
+  const filteredCinemas = cinemas.filter(
+    (cinema) =>
+      cinema.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      cinema.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      cinema.phone.includes(searchTerm)
+  );
+
+  const indexOfLastCinema = currentPage * cinemasPerPage;
+  const indexOfFirstCinema = indexOfLastCinema - cinemasPerPage;
+  const currentCinemas = filteredCinemas.slice(indexOfFirstCinema, indexOfLastCinema);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(cinemas);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Cinemas");
+    XLSX.writeFile(wb, "cinemas.xlsx");
+  };
+
   const handleShowModal = (cinema = null) => {
     setEditingCinema(cinema);
-    setFormData(cinema || { id: "", name: "", address: "", phone: "", rooms: "" });
+    setNewCinema(cinema ? { ...cinema } : { name: "", address: "", phone: "", rooms: "" });
     setShowModal(true);
   };
 
-  // Đóng Modal
-  const handleCloseModal = () => setShowModal(false);
-
-  // Xử lý nhập liệu
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  // Lưu dữ liệu (Thêm/Sửa)
   const handleSave = () => {
     if (editingCinema) {
-      // Sửa rạp
-      setCinemas(cinemas.map((cinema) => (cinema.id === editingCinema.id ? { ...formData, id: editingCinema.id } : cinema)));
+      setCinemas(cinemas.map((cinema) => (cinema.id === editingCinema.id ? newCinema : cinema)));
     } else {
-      // Thêm rạp mới
-      setCinemas([...cinemas, { ...formData, id: cinemas.length + 5001 }]);
+      setCinemas([...cinemas, { ...newCinema, id: cinemas.length + 1 }]);
     }
-    handleCloseModal();
+    setShowModal(false);
   };
 
-  // Xóa rạp
-  const handleDelete = (id) => setCinemas(cinemas.filter((cinema) => cinema.id !== id));
+  const handleDelete = (id) => {
+    setCinemas(cinemas.filter((cinema) => cinema.id !== id));
+  };
 
   return (
     <div className="cinema-container">
-      <h2 className="cinema-title">Cinema</h2>
+      <h2 className="cinema-title">Cinemas</h2>
 
-      {/* Search & Filter */}
+      {/* Search & Actions */}
       <div className="cinema-header">
         <InputGroup className="search-bar">
-          <Form.Control type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+          <Form.Control
+            type="text"
+            placeholder="Search by name, address or phone"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <Button variant="outline-secondary">
             <Search size={18} />
           </Button>
         </InputGroup>
-
         <div className="cinema-actions">
-          <Button variant="danger" onClick={() => handleShowModal()}>
+          <Button variant="success" onClick={() => handleShowModal()}>
             <FilePlus size={18} className="me-2" />
             Add Cinema
           </Button>
-          <Button variant="primary">
+          <Button variant="primary" onClick={exportToExcel} className="ms-2">
             <Download size={18} className="me-2" />
             Export to Excel
           </Button>
@@ -68,19 +86,19 @@ const Cinema = () => {
       </div>
 
       {/* Table */}
-      <Table bordered hover responsive className="table">
+      <Table bordered hover responsive className="cinema-table">
         <thead>
           <tr>
-            <th>CINEMA ID</th>
-            <th>NAME</th>
-            <th>ADDRESS</th>
-            <th>PHONE NUMBER</th>
-            <th>NUMBER OF ROOMS</th>
-            <th>ACTIONS</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Number of Rooms</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {cinemas.map((cinema) => (
+          {currentCinemas.map((cinema) => (
             <tr key={cinema.id}>
               <td>{cinema.id}</td>
               <td>{cinema.name}</td>
@@ -102,17 +120,15 @@ const Cinema = () => {
 
       {/* Pagination */}
       <Pagination className="cinema-pagination">
-        <Pagination.First />
-        <Pagination.Prev />
-        <Pagination.Item active>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
-        <Pagination.Item>{10}</Pagination.Item>
-        <Pagination.Next />
-        <Pagination.Last />
+        {Array.from({ length: Math.ceil(filteredCinemas.length / cinemasPerPage) }, (_, index) => (
+          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </Pagination.Item>
+        ))}
       </Pagination>
 
-      {/* Modal Add/Edit Cinema */}
-      <Modal show={showModal} onHide={handleCloseModal}>
+      {/* Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>{editingCinema ? "Edit Cinema" : "Add Cinema"}</Modal.Title>
         </Modal.Header>
@@ -120,29 +136,41 @@ const Cinema = () => {
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
+              <Form.Control
+                type="text"
+                value={newCinema.name}
+                onChange={(e) => setNewCinema({ ...newCinema, name: e.target.value })}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Address</Form.Label>
-              <Form.Control type="text" name="address" value={formData.address} onChange={handleChange} required />
+              <Form.Control
+                type="text"
+                value={newCinema.address}
+                onChange={(e) => setNewCinema({ ...newCinema, address: e.target.value })}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                type="text"
+                value={newCinema.phone}
+                onChange={(e) => setNewCinema({ ...newCinema, phone: e.target.value })}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Number of Rooms</Form.Label>
-              <Form.Control type="number" name="rooms" value={formData.rooms} onChange={handleChange} required />
+              <Form.Control
+                type="number"
+                value={newCinema.rooms}
+                onChange={(e) => setNewCinema({ ...newCinema, rooms: e.target.value })}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save
-          </Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+          <Button variant="primary" onClick={handleSave}>Save</Button>
         </Modal.Footer>
       </Modal>
     </div>

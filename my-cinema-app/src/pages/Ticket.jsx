@@ -1,167 +1,177 @@
 import React, { useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Modal } from "react-bootstrap";
 import { Search, FilePlus, Download, Trash2, Edit } from "lucide-react";
+import * as XLSX from "xlsx";
 import "../styles/Ticket.css";
 import "../styles/table.css";
 
 const Ticket = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [tickets, setTickets] = useState([
-    { id: 2001, schedule: "Movie A - Room 1", seat: "A1", price: 10.0, status: "Available" },
-    { id: 2002, schedule: "Movie B - Room 2", seat: "B3", price: 12.5, status: "Booked" },
-    { id: 2003, schedule: "Movie C - Room 1", seat: "C5", price: 15.0, status: "Cancelled" },
-  ]);
-  const [showModal, setShowModal] = useState(false);
-  const [editingTicket, setEditingTicket] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [editingTicket, setEditingTicket] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const ticketsPerPage = 10;
 
-  const handleDelete = (id) => {
-    setTickets(tickets.filter(ticket => ticket.id !== id));
-  };
+    const [tickets, setTickets] = useState([
+        {
+            id: 1,
+            movie: "Avengers: Endgame",
+            cinema: "Cinema A",
+            room: "Room 1",
+            seat: "A1",
+            price: "$10",
+        },
+        {
+            id: 2,
+            movie: "Interstellar",
+            cinema: "Cinema B",
+            room: "Room 2",
+            seat: "B2",
+            price: "$12",
+        }
+    ]);
 
-  const handleEdit = (ticket) => {
-    setEditingTicket(ticket);
-    setShowModal(true);
-  };
+    const [formData, setFormData] = useState({
+        id: "",
+        movie: "",
+        cinema: "",
+        room: "",
+        seat: "",
+        price: ""
+    });
 
-  const handleSave = () => {
-    if (editingTicket.id) {
-      setTickets(tickets.map(ticket => (ticket.id === editingTicket.id ? editingTicket : ticket)));
-    } else {
-      setTickets([...tickets, { ...editingTicket, id: tickets.length + 1 }]);
-    }
-    setShowModal(false);
-    setEditingTicket(null);
-  };
+    const handleShowModal = (ticket = null) => {
+        setEditingTicket(ticket);
+        setFormData(ticket || { id: "", movie: "", cinema: "", room: "", seat: "", price: "" });
+        setShowModal(true);
+    };
 
-  return (
-    <div className="ticket-container">
-      <h2 className="ticket-title">Tickets</h2>
+    const handleCloseModal = () => setShowModal(false);
+    const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const handleSave = () => {
+        if (editingTicket) {
+            setTickets(tickets.map((ticket) => (ticket.id === editingTicket.id ? { ...formData, id: editingTicket.id } : ticket)));
+        } else {
+            setTickets([...tickets, { ...formData, id: tickets.length + 1 }]);
+        }
+        handleCloseModal();
+    };
 
-      {/* Search & Filter */}
-      <div className="ticket-header">
-        <InputGroup className="search-bar">
-          <Form.Control
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Button variant="outline-secondary">
-            <Search size={18} />
-          </Button>
-        </InputGroup>
+    const handleDelete = (id) => setTickets(tickets.filter((ticket) => ticket.id !== id));
+    const filteredTickets = tickets.filter(
+        (ticket) =>
+            ticket.movie.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            ticket.cinema.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            ticket.room.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            ticket.seat.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-        <div className="ticket-actions">
-          <Button variant="danger" onClick={() => { setEditingTicket({}); setShowModal(true); }}>
-            <FilePlus size={18} className="me-2" />
-            Add Ticket
-          </Button>
-          <Button variant="primary">
-            <Download size={18} className="me-2" />
-            Export to Excel
-          </Button>
+    const indexOfLastTicket = currentPage * ticketsPerPage;
+    const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
+    const currentTickets = filteredTickets.slice(indexOfFirstTicket, indexOfLastTicket);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const exportToExcel = () => {
+        const ws = XLSX.utils.json_to_sheet(tickets);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Tickets");
+        XLSX.writeFile(wb, "tickets.xlsx");
+    };
+
+    return (
+        <div className="ticket-container">
+            <h2 className="ticket-title">Tickets</h2>
+            <div className="ticket-header">
+                <InputGroup className="search-bar">
+                    <Form.Control type="text" placeholder="Search by Movie, Cinema, Room, Seat" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Button variant="outline-secondary">
+                        <Search size={18} />
+                    </Button>
+                </InputGroup>
+                <div className="ticket-actions">
+                    <Button variant="success" onClick={() => handleShowModal()}>
+                        <FilePlus size={18} className="me-2" /> Add Ticket
+                    </Button>
+                    <Button variant="primary" onClick={exportToExcel}>
+                        <Download size={18} className="me-2" /> Export to Excel
+                    </Button>
+                </div>
+            </div>
+            <Table bordered hover responsive className="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Movie</th>
+                        <th>Cinema</th>
+                        <th>Room</th>
+                        <th>Seat</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {currentTickets.map((ticket) => (
+                        <tr key={ticket.id}>
+                            <td>{ticket.id}</td>
+                            <td>{ticket.movie}</td>
+                            <td>{ticket.cinema}</td>
+                            <td>{ticket.room}</td>
+                            <td>{ticket.seat}</td>
+                            <td>{ticket.price}</td>
+                            <td>
+                                <Button variant="outline-secondary" className="me-2" onClick={() => handleShowModal(ticket)}>
+                                    <Edit size={18} />
+                                </Button>
+                                <Button variant="outline-danger" onClick={() => handleDelete(ticket.id)}>
+                                    <Trash2 size={18} />
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+            <Pagination className="ticket-pagination">
+                {Array.from({ length: Math.ceil(filteredTickets.length / ticketsPerPage) }, (_, index) => (
+                    <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+                        {index + 1}
+                    </Pagination.Item>
+                ))}
+            </Pagination>
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{editingTicket ? "Edit Ticket" : "Add Ticket"}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Movie</Form.Label>
+                            <Form.Control type="text" name="movie" value={formData.movie} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Cinema</Form.Label>
+                            <Form.Control type="text" name="cinema" value={formData.cinema} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Room</Form.Label>
+                            <Form.Control type="text" name="room" value={formData.room} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Seat</Form.Label>
+                            <Form.Control type="text" name="seat" value={formData.seat} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Price</Form.Label>
+                            <Form.Control type="text" name="price" value={formData.price} onChange={handleChange} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+                    <Button variant="primary" onClick={handleSave}>Save</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
-      </div>
-
-      {/* Table */}
-      <Table bordered hover responsive className="table">
-        <thead>
-          <tr>
-            <th>TICKET ID</th>
-            <th>SCHEDULE</th>
-            <th>SEAT</th>
-            <th>PRICE</th>
-            <th>STATUS</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tickets.map((ticket) => (
-            <tr key={ticket.id}>
-              <td>{ticket.id}</td>
-              <td>{ticket.schedule}</td>
-              <td>{ticket.seat}</td>
-              <td>${ticket.price.toFixed(2)}</td>
-              <td>{ticket.status}</td>
-              <td>
-                <Button variant="outline-secondary" className="me-2" onClick={() => handleEdit(ticket)}>
-                  <Edit size={18} />
-                </Button>
-                <Button variant="outline-danger" onClick={() => handleDelete(ticket.id)}>
-                  <Trash2 size={18} />
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-
-      {/* Pagination */}
-      <Pagination className="ticket-pagination">
-        <Pagination.First />
-        <Pagination.Prev />
-        <Pagination.Item active>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
-        <Pagination.Item>{10}</Pagination.Item>
-        <Pagination.Next />
-        <Pagination.Last />
-      </Pagination>
-
-      {/* Modal for Add/Edit Ticket */}
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>{editingTicket?.id ? "Edit Ticket" : "Add Ticket"}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Schedule</Form.Label>
-              <Form.Control
-                type="text"
-                value={editingTicket?.schedule || ""}
-                onChange={(e) => setEditingTicket({ ...editingTicket, schedule: e.target.value })}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Seat</Form.Label>
-              <Form.Control
-                type="text"
-                value={editingTicket?.seat || ""}
-                onChange={(e) => setEditingTicket({ ...editingTicket, seat: e.target.value })}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                type="number"
-                value={editingTicket?.price || ""}
-                onChange={(e) => setEditingTicket({ ...editingTicket, price: parseFloat(e.target.value) || 0 })}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Status</Form.Label>
-              <Form.Select
-                value={editingTicket?.status || ""}
-                onChange={(e) => setEditingTicket({ ...editingTicket, status: e.target.value })}
-              >
-                <option value="Available">Available</option>
-                <option value="Booked">Booked</option>
-                <option value="Cancelled">Cancelled</option>
-              </Form.Select>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
+    );
 };
 
 export default Ticket;
