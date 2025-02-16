@@ -77,7 +77,7 @@ const Equipment = () => {
             <h2 className="equipment-title">Equipment</h2>
             <div className="equipment-header">
                 <InputGroup className="search-bar">
-                    <Form.Control type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Form.Control type="text" placeholder="Search by Name, Category" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                     <Button variant="outline-secondary">
                         <Search size={18} />
                     </Button>

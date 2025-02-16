@@ -1,0 +1,44 @@
+.employees-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.employees-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.employees-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 300px;
+}
+
+.employees-actions button {
+    margin-left: 10px;
+}
+
+
+.employees-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.modal-body form .form-group {
+    margin-bottom: 15px;
+}
+
+.modal-body form .form-control {
+    padding: 10px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}

@@ -77,7 +77,7 @@ const Customers = () => {
             <h2 className="customers-title">Customers</h2>
             <div className="customers-header">
                 <InputGroup className="search-bar">
-                    <Form.Control type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <Form.Control type="text" placeholder="Search by Name, Email" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                     <Button variant="outline-secondary">
                         <Search size={18} />
                     </Button>
