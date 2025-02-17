@@ -9,10 +9,10 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 // Dữ liệu thống kê số vé bán theo phim
 const pieData = [
-  { name: "Movie 1", value: 32 },
-  { name: "Movie 2", value: 25 },
-  { name: "Movie 3", value: 18 },
-  { name: "Movie 4", value: 25 },
+  { name: "NỤ HÔN BẠC TỶ", value: 32 },
+  { name: "RIDER:GIAO HÀNG CHO MA", value: 25 },
+  { name: "BỘ TỨ BÁO THỦ", value: 18 },
+  { name: "YÊU NHẦM BẠN THÂN", value: 25 },
 ];
 
 // Dữ liệu biểu đồ số vé bán theo ngày

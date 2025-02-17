@@ -13,22 +13,97 @@ const Ticket = () => {
     const ticketsPerPage = 10;
 
     const [tickets, setTickets] = useState([
-        {
-            id: 1,
-            movie: "Avengers: Endgame",
-            cinema: "Cinema A",
-            room: "Room 1",
-            seat: "A1",
-            price: "$10",
-        },
-        {
-            id: 2,
-            movie: "Interstellar",
-            cinema: "Cinema B",
-            room: "Room 2",
-            seat: "B2",
-            price: "$12",
-        }
+        
+            {
+                id: 1,
+                movie: "Avengers: Endgame",
+                cinema: "Cinema A",
+                room: "Room 1",
+                seat: "A1",
+                price: "$10"
+            },
+            {
+                id: 2,
+                movie: "Inception",
+                cinema: "Cinema B",
+                room: "Room 3",
+                seat: "B5",
+                price: "$12"
+            },
+            {
+                id: 3,
+                movie: "Interstellar",
+                cinema: "Cinema A",
+                room: "Room 2",
+                seat: "C3",
+                price: "$15"
+            },
+            {
+                id: 4,
+                movie: "Joker",
+                cinema: "Cinema C",
+                room: "Room 5",
+                seat: "D7",
+                price: "$10"
+            },
+            {
+                id: 5,
+                movie: "The Dark Knight",
+                cinema: "Cinema B",
+                room: "Room 1",
+                seat: "E2",
+                price: "$14"
+            },
+            {
+                id: 6,
+                movie: "Spider-Man: No Way Home",
+                cinema: "Cinema A",
+                room: "Room 4",
+                seat: "F6",
+                price: "$11"
+            },
+            {
+                id: 7,
+                movie: "Titanic",
+                cinema: "Cinema C",
+                room: "Room 2",
+                seat: "G8",
+                price: "$9"
+            },
+            {
+                id: 8,
+                movie: "The Matrix",
+                cinema: "Cinema B",
+                room: "Room 3",
+                seat: "H4",
+                price: "$13"
+            },
+            {
+                id: 9,
+                movie: "Dune: Part Two",
+                cinema: "Cinema A",
+                room: "Room 1",
+                seat: "I9",
+                price: "$16"
+            },
+            {
+                id: 10,
+                movie: "The Godfather",
+                cinema: "Cinema C",
+                room: "Room 5",
+                seat: "J3",
+                price: "$18"
+            },
+            {
+                id: 11,
+                movie: "Parasite",
+                cinema: "Cinema B",
+                room: "Room 4",
+                seat: "K5",
+                price: "$12"
+            }
+        
+        
     ]);
 
     const [formData, setFormData] = useState({

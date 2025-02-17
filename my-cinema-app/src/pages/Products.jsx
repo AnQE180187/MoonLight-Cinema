@@ -13,20 +13,86 @@ const Product = () => {
     const productsPerPage = 10;
 
     const [products, setProducts] = useState([
-        {
-            id: 1,
-            name: "Popcorn",
-            category: "Snacks",
-            price: "$5",
-            stock: "100",
-        },
-        {
-            id: 2,
-            name: "Soda",
-            category: "Beverages",
-            price: "$3",
-            stock: "150",
-        }
+        
+            {
+                id: 1,
+                name: "Popcorn",
+                category: "Snacks",
+                price: "$5",
+                stock: "100"
+            },
+            {
+                id: 2,
+                name: "Coca-Cola",
+                category: "Beverages",
+                price: "$3",
+                stock: "150"
+            },
+            {
+                id: 3,
+                name: "Nachos",
+                category: "Snacks",
+                price: "$6",
+                stock: "80"
+            },
+            {
+                id: 4,
+                name: "Hot Dog",
+                category: "Fast Food",
+                price: "$7",
+                stock: "50"
+            },
+            {
+                id: 5,
+                name: "Pepsi",
+                category: "Beverages",
+                price: "$3",
+                stock: "140"
+            },
+            {
+                id: 6,
+                name: "Chocolate Bar",
+                category: "Snacks",
+                price: "$4",
+                stock: "90"
+            },
+            {
+                id: 7,
+                name: "French Fries",
+                category: "Fast Food",
+                price: "$5",
+                stock: "60"
+            },
+            {
+                id: 8,
+                name: "Sprite",
+                category: "Beverages",
+                price: "$3",
+                stock: "130"
+            },
+            {
+                id: 9,
+                name: "Chicken Nuggets",
+                category: "Fast Food",
+                price: "$8",
+                stock: "40"
+            },
+            {
+                id: 10,
+                name: "Water Bottle",
+                category: "Beverages",
+                price: "$2",
+                stock: "200"
+            },
+            {
+                id: 11,
+                name: "Ice Cream",
+                category: "Desserts",
+                price: "$6",
+                stock: "70"
+            }
+        
+        
     ]);
 
     const [formData, setFormData] = useState({

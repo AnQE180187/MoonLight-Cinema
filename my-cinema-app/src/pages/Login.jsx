@@ -11,7 +11,8 @@ const Login = ({ onLogin }) => {
   const ADMIN_ACCOUNTS = [
     { username: "admin1", password: "admin123" },
     { username: "admin2", password: "admin456" },
-    { username: "admin3", password: "admin789" }
+    { username: "admin3", password: "admin789" },
+    { username: "vungu123", password: "cchovungu" },
   ];
 
   const handleSubmit = (e) => {

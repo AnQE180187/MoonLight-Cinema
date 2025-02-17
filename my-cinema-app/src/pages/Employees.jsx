@@ -13,22 +13,96 @@ const Employees = () => {
     const employeesPerPage = 10;
 
     const [employees, setEmployees] = useState([
-        {
-            id: 1,
-            name: "Alice Johnson",
-            email: "alice@example.com",
-            phone: "123-456-7890",
-            dob: "1985-07-24",
-            role: "Manager"
-        },
-        {
-            id: 2,
-            name: "Bob Smith",
-            email: "bob@example.com",
-            phone: "987-654-3210",
-            dob: "1990-03-12",
-            role: "Staff"
-        }
+            {
+                id: 1,
+                name: "Alice Johnson",
+                email: "alice@example.com",
+                phone: "123-456-7890",
+                dob: "1985-07-24",
+                role: "Manager"
+            },
+            {
+                id: 2,
+                name: "Bob Smith",
+                email: "bob@example.com",
+                phone: "234-567-8901",
+                dob: "1990-05-12",
+                role: "Supervisor"
+            },
+            {
+                id: 3,
+                name: "Charlie Davis",
+                email: "charlie@example.com",
+                phone: "345-678-9012",
+                dob: "1988-09-30",
+                role: "Team Lead"
+            },
+            {
+                id: 4,
+                name: "David Wilson",
+                email: "david@example.com",
+                phone: "456-789-0123",
+                dob: "1992-04-15",
+                role: "HR"
+            },
+            {
+                id: 5,
+                name: "Emma Martinez",
+                email: "emma@example.com",
+                phone: "567-890-1234",
+                dob: "1987-12-05",
+                role: "Developer"
+            },
+            {
+                id: 6,
+                name: "Frank White",
+                email: "frank@example.com",
+                phone: "678-901-2345",
+                dob: "1993-06-25",
+                role: "Designer"
+            },
+            {
+                id: 7,
+                name: "Grace Lee",
+                email: "grace@example.com",
+                phone: "789-012-3456",
+                dob: "1986-11-10",
+                role: "Product Manager"
+            },
+            {
+                id: 8,
+                name: "Henry Kim",
+                email: "henry@example.com",
+                phone: "890-123-4567",
+                dob: "1991-08-20",
+                role: "Marketing"
+            },
+            {
+                id: 9,
+                name: "Isabella Moore",
+                email: "isabella@example.com",
+                phone: "901-234-5678",
+                dob: "1994-02-28",
+                role: "Support"
+            },
+            {
+                id: 10,
+                name: "Jack Brown",
+                email: "jack@example.com",
+                phone: "012-345-6789",
+                dob: "1989-03-17",
+                role: "Sales"
+            },
+            {
+                id: 11,
+                name: "Karen Scott",
+                email: "karen@example.com",
+                phone: "123-456-7891",
+                dob: "1983-09-22",
+                role: "CEO"
+            }
+        
+        
     ]);
 
     const [formData, setFormData] = useState({

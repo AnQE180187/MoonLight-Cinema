@@ -26,7 +26,69 @@ const Customers = () => {
             email: "janesmith@example.com",
             phone: "987-654-3210",
             dob: "1995-05-15"
-        }
+        },
+        {
+            id: 3,
+            name: "Toro",
+            email: "toro@example.com",
+            phone: "258-741-9635",
+            dob: "1988-02-02"
+        },
+        {
+            id: 4,
+            name: "Bob Brown",
+            email: "bobbrown@example.com",
+            phone: "456-789-0123",
+            dob: "1994-04-04",
+        },
+        {
+            id: 5,
+            name: "Charlie Davis",
+            email: "charliedavis@example.com",
+            phone: "567-890-1234",
+            dob: "1995-05-05",
+        },
+        {
+            id: 6,
+            name: "Florentino",
+            email: "florentino@example.com",
+            phone: "896-254-3258",
+            dob: "1987-08-07",
+        },
+        {
+            id: 7,
+            name: "Yenna",
+            email: "yenna@example.com",
+            phone: "328-244-9772",
+            dob: "1986-07-01",
+        },
+        {
+            id: 8,
+            name: "Tulen",
+            email: "tulen@example.com",
+            phone: "856-123-9875",
+            dob: "1977-01-01",
+        },
+        {
+            id: 9,
+            name: "Hayate",
+            email: "hayate@example.com",
+            phone: "012-987-6547",
+            dob: "1979-05-01",
+        },
+        {
+            id: 10,
+            name: "Raz",
+            email: "raz@example.com",
+            phone: "582-314-6879",
+            dob: "1999-05-07",
+        },
+
+
+
+
+
+
     ]);
 
     const [formData, setFormData] = useState({
