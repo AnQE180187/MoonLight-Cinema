@@ -6,48 +6,39 @@ import { PeopleFill, Film, TicketPerforatedFill, CurrencyDollar } from 'react-bo
 import "../styles/Dashboard.css";
 
 
-<<<<<<< HEAD
-const revenueData = [
-  { month: 'Jan', revenue: 5000 },
-  { month: 'Feb', revenue: 7000 },
-  { month: 'Mar', revenue: 8000 },
-  { month: 'Apr', revenue: 6500 },
-  { month: 'May', revenue: 9000 },
-  { month: 'Jun', revenue: 11000 },
-];
-const ticketSalesData = [
-  { day: 'Mon', tickets: 150 },
-  { day: 'Tue', tickets: 200 },
-  { day: 'Wed', tickets: 180 },
-  { day: 'Thu', tickets: 220 },
-  { day: 'Fri', tickets: 300 },
-  { day: 'Sat', tickets: 400 },
-  { day: 'Sun', tickets: 350 },
-];
-const bookings = [
-  { user: 'John Doe', movie: 'Avatar 2', seats: 3, amount: '$45' },
-  { user: 'Jane Smith', movie: 'Oppenheimer', seats: 2, amount: '$30' },
-  { user: 'Michael Brown', movie: 'Spider-Man: No Way Home', seats: 4, amount: '$60' },
-];
-const posters = [
-  'PosterPhim/Poster_Nhà Bà Nữ.jpg',
-  'PosterPhim/Poster_Lật Mặt 7.jpg',
-  'PosterPhim/Poster_Mai.jpg',
-  'PosterPhim/Poster_Nụ Hôn Bạc Tỷ.jpg',
-  'PosterPhim/Poster_Quỷ Cẩu.jpg',
-=======
-// Dữ liệu thống kê số vé bán theo phim
-const pieData = [
-  { name: "NỤ HÔN BẠC TỶ", value: 32 },
-  { name: "RIDER:GIAO HÀNG CHO MA", value: 25 },
-  { name: "BỘ TỨ BÁO THỦ", value: 18 },
-  { name: "YÊU NHẦM BẠN THÂN", value: 25 },
->>>>>>> 4fe01e12beb62f3ec26473fd683cf5273c99e87a
-];
-
 
 function Dashboard() {
-    return (
+  const revenueData = [
+    { month: 'Jan', revenue: 5000 },
+    { month: 'Feb', revenue: 7000 },
+    { month: 'Mar', revenue: 8000 },
+    { month: 'Apr', revenue: 6500 },
+    { month: 'May', revenue: 9000 },
+    { month: 'Jun', revenue: 11000 },
+  ];
+  const ticketSalesData = [
+    { day: 'Mon', tickets: 150 },
+    { day: 'Tue', tickets: 200 },
+    { day: 'Wed', tickets: 180 },
+    { day: 'Thu', tickets: 220 },
+    { day: 'Fri', tickets: 300 },
+    { day: 'Sat', tickets: 400 },
+    { day: 'Sun', tickets: 350 },
+  ];
+  const bookings = [
+    { user: 'John Doe', movie: 'Avatar 2', seats: 3, amount: '$45' },
+    { user: 'Jane Smith', movie: 'Oppenheimer', seats: 2, amount: '$30' },
+    { user: 'Michael Brown', movie: 'Spider-Man: No Way Home', seats: 4, amount: '$60' },
+  ];
+  const posters = [
+    'PosterPhim/Poster_Nhà Bà Nữ.jpg',
+    'PosterPhim/Poster_Lật Mặt 7.jpg',
+    'PosterPhim/Poster_Mai.jpg',
+    'PosterPhim/Poster_Nụ Hôn Bạc Tỷ.jpg',
+    'PosterPhim/Poster_Quỷ Cẩu.jpg',
+  ];
+    
+  return (
     <div className="container mt-4">
       {/* Movie Posters Carousel */}
       <Carousel className="mb-4">
