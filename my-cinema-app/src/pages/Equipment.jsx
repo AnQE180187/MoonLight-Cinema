@@ -13,20 +13,86 @@ const Equipment = () => {
     const equipmentPerPage = 10;
 
     const [equipment, setEquipment] = useState([
-        {
-            id: 1,
-            name: "Projector",
-            category: "Audio/Visual",
-            quantity: 5,
-            status: "Available"
-        },
-        {
-            id: 2,
-            name: "Microphone",
-            category: "Audio",
-            quantity: 10,
-            status: "In Use"
-        }
+        
+            {
+                id: 1,
+                name: "Projector",
+                category: "Audio/Visual",
+                quantity: 5,
+                status: "Available"
+            },
+            {
+                id: 2,
+                name: "Laptop",
+                category: "Electronics",
+                quantity: 10,
+                status: "In Use"
+            },
+            {
+                id: 3,
+                name: "Whiteboard",
+                category: "Office Supplies",
+                quantity: 3,
+                status: "Available"
+            },
+            {
+                id: 4,
+                name: "Microphone",
+                category: "Audio/Visual",
+                quantity: 8,
+                status: "Under Maintenance"
+            },
+            {
+                id: 5,
+                name: "Conference Table",
+                category: "Furniture",
+                quantity: 2,
+                status: "Available"
+            },
+            {
+                id: 6,
+                name: "Tablet",
+                category: "Electronics",
+                quantity: 15,
+                status: "In Use"
+            },
+            {
+                id: 7,
+                name: "Office Chair",
+                category: "Furniture",
+                quantity: 20,
+                status: "Available"
+            },
+            {
+                id: 8,
+                name: "Speaker",
+                category: "Audio/Visual",
+                quantity: 6,
+                status: "Available"
+            },
+            {
+                id: 9,
+                name: "Desktop Computer",
+                category: "Electronics",
+                quantity: 12,
+                status: "Under Maintenance"
+            },
+            {
+                id: 10,
+                name: "Printer",
+                category: "Office Supplies",
+                quantity: 4,
+                status: "In Use"
+            },
+            {
+                id: 11,
+                name: "Webcam",
+                category: "Electronics",
+                quantity: 7,
+                status: "Available"
+            }
+        
+        
     ]);
 
     const [formData, setFormData] = useState({

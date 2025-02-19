@@ -1,0 +1,21 @@
+/* Sidebar.css */
+.sidebar {
+    background-color: #f7f584bb; /* Màu nền tối */
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .nav-link {
+    color: #9c9c9c; /* Màu chữ của các liên kết */
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar .nav-link:hover {
+    background-color: #ffcc00; /* Màu nền khi hover */
+    color: #121212; /* Màu chữ khi hover */
+  }
+  

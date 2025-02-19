@@ -13,20 +13,86 @@ const Orders = () => {
     const ordersPerPage = 10;
 
     const [orders, setOrders] = useState([
-        {
-            id: 1,
-            customer: "John Doe",
-            total: "$50.00",
-            date: "2024-02-14",
-            status: "Completed"
-        },
-        {
-            id: 2,
-            customer: "Jane Smith",
-            total: "$75.00",
-            date: "2024-02-15",
-            status: "Pending"
-        }
+        
+            {
+                id: 1,
+                customer: "John Doe",
+                total: "$50.00",
+                date: "2024-02-14",
+                status: "Completed"
+            },
+            {
+                id: 2,
+                customer: "Jane Smith",
+                total: "$75.50",
+                date: "2024-02-15",
+                status: "Pending"
+            },
+            {
+                id: 3,
+                customer: "Michael Johnson",
+                total: "$120.00",
+                date: "2024-02-16",
+                status: "Completed"
+            },
+            {
+                id: 4,
+                customer: "Emily Davis",
+                total: "$35.75",
+                date: "2024-02-17",
+                status: "Cancelled"
+            },
+            {
+                id: 5,
+                customer: "David Wilson",
+                total: "$89.90",
+                date: "2024-02-18",
+                status: "Completed"
+            },
+            {
+                id: 6,
+                customer: "Sarah Brown",
+                total: "$45.25",
+                date: "2024-02-19",
+                status: "Pending"
+            },
+            {
+                id: 7,
+                customer: "James Taylor",
+                total: "$200.00",
+                date: "2024-02-20",
+                status: "Completed"
+            },
+            {
+                id: 8,
+                customer: "Olivia Martinez",
+                total: "$55.00",
+                date: "2024-02-21",
+                status: "Processing"
+            },
+            {
+                id: 9,
+                customer: "William Anderson",
+                total: "$99.99",
+                date: "2024-02-22",
+                status: "Completed"
+            },
+            {
+                id: 10,
+                customer: "Sophia Thomas",
+                total: "$80.30",
+                date: "2024-02-23",
+                status: "Cancelled"
+            },
+            {
+                id: 11,
+                customer: "Daniel White",
+                total: "$60.45",
+                date: "2024-02-24",
+                status: "Pending"
+            }
+        
+        
     ]);
 
     const [formData, setFormData] = useState({

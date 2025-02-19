@@ -6,6 +6,7 @@ import { PeopleFill, Film, TicketPerforatedFill, CurrencyDollar } from 'react-bo
 import "../styles/Dashboard.css";
 
 
+<<<<<<< HEAD
 const revenueData = [
   { month: 'Jan', revenue: 5000 },
   { month: 'Feb', revenue: 7000 },
@@ -34,6 +35,14 @@ const posters = [
   'PosterPhim/Poster_Mai.jpg',
   'PosterPhim/Poster_Nụ Hôn Bạc Tỷ.jpg',
   'PosterPhim/Poster_Quỷ Cẩu.jpg',
+=======
+// Dữ liệu thống kê số vé bán theo phim
+const pieData = [
+  { name: "NỤ HÔN BẠC TỶ", value: 32 },
+  { name: "RIDER:GIAO HÀNG CHO MA", value: 25 },
+  { name: "BỘ TỨ BÁO THỦ", value: 18 },
+  { name: "YÊU NHẦM BẠN THÂN", value: 25 },
+>>>>>>> 4fe01e12beb62f3ec26473fd683cf5273c99e87a
 ];
 
 

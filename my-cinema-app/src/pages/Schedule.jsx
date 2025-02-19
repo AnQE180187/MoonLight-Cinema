@@ -13,20 +13,86 @@ const Schedule = () => {
     const schedulesPerPage = 10;
 
     const [schedules, setSchedules] = useState([
+    
         {
             id: 1,
             movie: "Avengers: Endgame",
             cinema: "Cinema A",
             room: "Room 1",
-            showtime: "2024-02-14 18:00",
+            showtime: "2024-02-14 18:00"
         },
         {
             id: 2,
-            movie: "Interstellar",
+            movie: "Inception",
             cinema: "Cinema B",
+            room: "Room 3",
+            showtime: "2024-02-15 20:30"
+        },
+        {
+            id: 3,
+            movie: "Interstellar",
+            cinema: "Cinema A",
             room: "Room 2",
-            showtime: "2024-02-14 20:00",
+            showtime: "2024-02-16 17:45"
+        },
+        {
+            id: 4,
+            movie: "Joker",
+            cinema: "Cinema C",
+            room: "Room 5",
+            showtime: "2024-02-17 19:00"
+        },
+        {
+            id: 5,
+            movie: "The Dark Knight",
+            cinema: "Cinema B",
+            room: "Room 1",
+            showtime: "2024-02-18 21:15"
+        },
+        {
+            id: 6,
+            movie: "Spider-Man: No Way Home",
+            cinema: "Cinema A",
+            room: "Room 4",
+            showtime: "2024-02-19 16:30"
+        },
+        {
+            id: 7,
+            movie: "Titanic",
+            cinema: "Cinema C",
+            room: "Room 2",
+            showtime: "2024-02-20 14:00"
+        },
+        {
+            id: 8,
+            movie: "The Matrix",
+            cinema: "Cinema B",
+            room: "Room 3",
+            showtime: "2024-02-21 22:00"
+        },
+        {
+            id: 9,
+            movie: "Dune: Part Two",
+            cinema: "Cinema A",
+            room: "Room 1",
+            showtime: "2024-02-22 18:45"
+        },
+        {
+            id: 10,
+            movie: "The Godfather",
+            cinema: "Cinema C",
+            room: "Room 5",
+            showtime: "2024-02-23 20:00"
+        },
+        {
+            id: 11,
+            movie: "Parasite",
+            cinema: "Cinema B",
+            room: "Room 4",
+            showtime: "2024-02-24 19:30"
         }
+    
+    
     ]);
 
     const [formData, setFormData] = useState({

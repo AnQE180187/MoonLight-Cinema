@@ -1,12 +1,12 @@
 /* Header.css */
 
 .custom-header {
-    background-color: #fff;
+    background-color: #eeea05cd;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid #ffffff;
   }
   
   .header-title {

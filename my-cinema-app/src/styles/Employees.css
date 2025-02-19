@@ -1,28 +1,111 @@
+/* Hiệu ứng xuất hiện mượt mà */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hiệu ứng tiêu đề ánh sáng nhấp nháy */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 204, 0, 1);
+    }
+}
+
+/* Hiệu ứng xuất hiện từ bên trái */
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng hover lung linh cho button */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 204, 0, 1);
+    }
+}
+
 .employees-container {
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #121212;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    animation: fadeIn 1s ease-in-out;
 }
 
 .employees-title {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+    animation: glow 1.5s infinite alternate;
 }
 
 .employees-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 1s ease-in-out;
 }
 
 .search-bar {
     width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #222;
+    color: #fff;
+    transition: all 0.3s ease;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 .employees-actions button {
     margin-left: 10px;
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    border: none;
+    border-radius: 5px;
+    color: #121212;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeIn 1.2s ease-in-out;
 }
 
+.employees-actions button:hover {
+    transform: scale(1.05);
+    animation: pulse 1s infinite alternate;
+}
 
 .employees-pagination {
     display: flex;
@@ -30,15 +113,79 @@
     margin-top: 20px;
 }
 
+.employees-pagination button {
+    background-color: transparent;
+    border: 1px solid #ffcc00;
+    color: #ffcc00;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.employees-pagination button:hover {
+    background-color: #ffcc00;
+    color: #121212;
+    transform: scale(1.1);
+}
+
 .modal-body form .form-group {
     margin-bottom: 15px;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
 .modal-body form .form-control {
     padding: 10px;
+    background-color: #222;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.modal-body form .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 .modal-footer {
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.modal-footer button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary {
+    background-color: #ffcc00;
+    border: none;
+    color: #121212;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+    animation: pulse 1s infinite alternate;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #444;
+    border: none;
+    color: #fff;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #666;
 }
