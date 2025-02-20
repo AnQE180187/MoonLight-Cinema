@@ -1,23 +1,38 @@
 .movie-container {
-    padding: 20px;
-    background-color: #000000;
-    min-height: 100vh;
+  padding: 20px;
+  background-color: #121212;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+ 
   }
   
   .movie-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #ffcc00;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
   }
-  .movie-actions {
-    display: flex;
-    gap: 10px;
+  .movie-actions button{
+    margin-left: 10px;
+  padding: 10px 15px;
+  background: linear-gradient(45deg, #ffcc00, #ff9900);
+  border: none;
+  border-radius: 5px;
+  color: #121212;
+  font-weight: bold;
   }
   .movie-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   }
   
   .search-bar {

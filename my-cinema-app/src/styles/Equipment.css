@@ -5,7 +5,7 @@
     color: #fff; /* Chữ trắng nổi bật */
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    animation: fadeIn 1s ease-in-out;
+   
 }
 
 /* Tiêu đề với hiệu ứng neon */
@@ -18,7 +18,7 @@
     text-align: center;
     color: #ffcc00; /* Màu vàng ánh sáng */
     text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
-    animation: glow 1.5s infinite alternate;
+   
 }
 
 /* Header với hiệu ứng slide-in */
@@ -29,7 +29,7 @@
     margin-bottom: 20px;
     padding: 10px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    animation: slideIn 1s ease-in-out;
+   
 }
 
 /* Thanh tìm kiếm với hiệu ứng focus */
@@ -40,7 +40,7 @@
     border: none;
     background-color: #222;
     color: #fff;
-    transition: all 0.3s ease;
+    
 }
 
 .search-bar:focus {
@@ -58,8 +58,8 @@
     color: #121212;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
-    animation: fadeIn 1s ease-in-out;
+  
+   
 }
 
 .equipment-actions button:hover {
@@ -82,7 +82,7 @@
     border-radius: 5px;
     margin: 0 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+   
 }
 
 .equipment-pagination button:hover {
@@ -91,92 +91,3 @@
     transform: scale(1.1);
 }
 
-/* Form điều khiển */
-.modal-body form .form-group {
-    margin-bottom: 15px;
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-.modal-body form .form-control {
-    padding: 10px;
-    background-color: #222;
-    border: none;
-    color: #fff;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-.modal-body form .form-control:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-}
-
-/* Footer modal */
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 15px;
-}
-
-/* Nút trong modal */
-.modal-footer button {
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.modal-footer .btn-primary {
-    background-color: #ffcc00;
-    border: none;
-    color: #121212;
-}
-
-.modal-footer .btn-primary:hover {
-    background-color: #ff9900;
-    transform: scale(1.05);
-}
-
-.modal-footer .btn-secondary {
-    background-color: #444;
-    border: none;
-    color: #fff;
-}
-
-.modal-footer .btn-secondary:hover {
-    background-color: #666;
-}
-
-/* Hiệu ứng động */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
-    }
-    to {
-        text-shadow: 0 0 20px rgba(255, 204, 0, 1);
-    }
-}

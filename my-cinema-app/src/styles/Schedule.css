@@ -1,143 +1,141 @@
-/* General Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-}
 
-/* Schedule Container */
 .schedule-container {
-    padding: 30px;
-    background-color: #1c1c1c;
-    min-height: 100vh;
+    padding: 20px;
+    background-color: #121212;
+    color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Schedule Title */
-.schedule-title {
-    font-size: 30px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+   
+  }
+  
+  .schedule-title {
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
     color: #ffcc00;
-}
-
-/* Schedule Header */
-.schedule-header {
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+  }
+  
+  .schedule-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-bottom: 2px solid #ffcc00;
-    padding-bottom: 10px;
-}
-
-/* Search Bar */
-.search-bar {
+    padding: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    
+  }
+  
+  .search-bar {
     width: 300px;
     padding: 10px;
-    border: 1px solid #ffcc00;
     border-radius: 5px;
-    background-color: #333;
+    border: none;
+    background-color: #222;
     color: #fff;
-    transition: border 0.3s;
-}
-
-.search-bar:focus {
-    border-color: #ffb300;
+    
+  }
+  
+  .search-bar:focus {
     outline: none;
-}
-
-/* Schedule Actions */
-.schedule-actions button {
-    padding: 12px 18px;
-   
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  }
+  
+  .schedule-actions button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 14px;
-}
-.schedule-actions {
-  display: flex;
-  gap: 10px;
-}
-
-
-/* Schedule Pagination */
-.schedule-pagination {
+    color: #121212;
+    font-weight: bold;
+  
+  }
+  
+  
+  .schedule-pagination {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
-}
-
-.schedule-pagination button {
-    background-color: #ffcc00;
-    color: #121212;
-    border: none;
-    padding: 12px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.schedule-pagination button:hover {
-    background-color: #e6b800;
-}
-
-/* Modal Styling */
-.modal-content {
-    background-color: #2a2a2a;
-    border-radius: 10px;
-    color: white;
-}
-
-.modal-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px;
-    border-radius: 8px 8px 0 0;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Modal Body */
-.modal-body input {
-    margin-bottom: 10px;
-    padding: 8px;
+    margin-top: 20px;
+  }
+  
+  .schedule-pagination button {
+    background-color: transparent;
     border: 1px solid #ffcc00;
+    color: #ffcc00;
+    padding: 8px 12px;
     border-radius: 5px;
-    background-color: #333;
-    color: #fff;
-}
-
-/* Buttons */
-.btn {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-primary {
+    margin: 0 5px;
+  
+  
+    
+  }
+  
+  .schedule-pagination button:hover {
     background-color: #ffcc00;
     color: #121212;
-}
-
-.btn-primary:hover {
-    background-color: #e6b800;
-}
-
-.btn-secondary {
-    background-color: #333;
-    color: white;
-}
-
-.btn-secondary:hover {
+    transform: scale(1.1);
+  }
+  
+  .modal-body form .form-group {
+    margin-bottom: 15px;
+    
+  }
+  
+  .modal-body form .form-control {
+    padding: 10px;
+    background-color: #222;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+   
+  }
+  
+  .modal-body form .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+   
+  }
+  
+  .modal-footer button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  
+  }
+  
+  .modal-footer .btn-primary {
+    background-color: #ffcc00;
+    border: none;
+    color: #121212;
+    
+  }
+  
+  .modal-footer .btn-primary:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+    
+  }
+  
+  .modal-footer .btn-secondary {
     background-color: #444;
-}
-
+    border: none;
+    color: #fff;
+    
+  }
+  
+  .modal-footer .btn-secondary:hover {
+    background-color: #666;
+  }
+  

@@ -3,6 +3,7 @@ import { Table, Button, Form, InputGroup, Pagination, Modal } from "react-bootst
 import { Search, FilePlus, Download, Edit, Trash2 } from "lucide-react";
 import * as XLSX from "xlsx";
 import "../styles/Cinema.css";
+import "../styles/Modal.css";
 
 const Cinema = () => {
   const [searchTerm, setSearchTerm] = useState("");

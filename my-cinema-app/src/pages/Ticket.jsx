@@ -4,6 +4,7 @@ import { Search, FilePlus, Download, Trash2, Edit } from "lucide-react";
 import * as XLSX from "xlsx";
 import "../styles/Ticket.css";
 import "../styles/table.css";
+import "../styles/Modal.css";
 
 const Ticket = () => {
     const [searchTerm, setSearchTerm] = useState("");
