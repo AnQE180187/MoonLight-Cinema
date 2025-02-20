@@ -36,7 +36,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h2 className="login-title">SIGN IN</h2>
+        <h2 className="login-title">MoonLight</h2>
         <form onSubmit={handleSubmit}>
           <label>Account</label>
           <input className="login-input" type="text" value={account} onChange={(e) => setAccount(e.target.value)} />

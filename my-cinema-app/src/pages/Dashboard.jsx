@@ -94,7 +94,7 @@ function Dashboard() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="revenue" stroke="#8884d8" strokeWidth={2} />
+                  <Line type="monotone" dataKey="revenue" stroke="#333" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
             </Card.Body>
@@ -111,7 +111,7 @@ function Dashboard() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="tickets" fill="#82ca9d" />
+                  <Bar dataKey="tickets" fill="#333" />
                 </BarChart>
               </ResponsiveContainer>
             </Card.Body>
