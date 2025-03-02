@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css";
+import "../styles/Login.css"; // Đảm bảo import đúng file CSS
 
 const Login = ({ onLogin }) => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Trạng thái hiển thị lỗi
   const navigate = useNavigate();
 
   // Danh sách tài khoản Admin
@@ -17,9 +18,9 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const foundAdmin = ADMIN_ACCOUNTS.find(admin => 
-      admin.username === account && admin.password === password
+
+    const foundAdmin = ADMIN_ACCOUNTS.find(
+      (admin) => admin.username === account && admin.password === password
     );
 
     if (foundAdmin) {
@@ -29,7 +30,7 @@ const Login = ({ onLogin }) => {
       onLogin();
       navigate("/dashboard"); // Chuyển hướng sau khi đăng nhập thành công
     } else {
-      alert("Invalid account or password!");
+      setErrorMessage("Invalid account or password!");
     }
   };
 
@@ -39,10 +40,25 @@ const Login = ({ onLogin }) => {
         <h2 className="login-title">MoonLight</h2>
         <form onSubmit={handleSubmit}>
           <label>Account</label>
-          <input className="login-input" type="text" value={account} onChange={(e) => setAccount(e.target.value)} />
+          <input
+            className="login-input"
+            type="text"
+            value={account}
+            onChange={(e) => setAccount(e.target.value)}
+            required
+          />
           <label>Password</label>
-          <input className="login-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button className="login-button" type="submit">Login</button>
+          <input
+            className="login-input"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <button className="login-button" type="submit">
+            Login
+          </button>
         </form>
       </div>
     </div>

@@ -1,14 +1,14 @@
-/* Container chính với hiệu ứng fade-in */
+
 .equipment-container {
     padding: 20px;
-    background-color: #000000; /* Nền đen điện ảnh */
-    color: #fff; /* Chữ trắng nổi bật */
+    background: linear-gradient(135deg, #1a1a1a, #2c3e50);
+    color: #fff; 
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
    
 }
 
-/* Tiêu đề với hiệu ứng neon */
+
 .equipment-title {
     font-size: 26px;
     font-weight: bold;
@@ -16,12 +16,12 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
-    color: #ffcc00; /* Màu vàng ánh sáng */
+    color: #ffcc00;
     text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
    
 }
 
-/* Header với hiệu ứng slide-in */
+
 .equipment-header {
     display: flex;
     justify-content: space-between;
@@ -32,7 +32,7 @@
    
 }
 
-/* Thanh tìm kiếm với hiệu ứng focus */
+
 .search-bar {
     width: 300px;
     padding: 10px;
@@ -48,7 +48,7 @@
     box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
-/* Nút bấm với hiệu ứng hover */
+
 .equipment-actions button {
     margin-left: 10px;
     padding: 10px 15px;
@@ -67,7 +67,7 @@
     box-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
 }
 
-/* Phân trang với hiệu ứng hover */
+
 .equipment-pagination {
     display: flex;
     justify-content: center;

@@ -1,21 +1,50 @@
 /* Sidebar.css */
 .sidebar {
-    background-color: #fcff9a;
-    padding: 20px;
-    height: 100vh;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sidebar .nav-link {
-    color: #9c9c9c; /* Màu chữ của các liên kết */
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  
-  .sidebar .nav-link:hover {
-    background-color: #ffcc00; /* Màu nền khi hover */
-    color: #121212; /* Màu chữ khi hover */
-  }
-  
+  position: fixed;
+  height: 100vh;
+  width: 60px; /* Chiều rộng mặc định khi đóng */
+  background-color: #fcff9a;
+  transition: width 0.3s ease; /* Hiệu ứng mở rộng mượt mà */
+  overflow: hidden;
+  z-index: 1000;
+ 
+}
+
+.sidebar:hover {
+  width: 200px; /* Mở rộng khi hover */
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  color: #000000; /* Màu chữ sáng */
+  padding: 15px 20px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* Giữ chữ không xuống dòng */
+}
+
+.sidebar-link:hover {
+  background: #f1c40f; /* Màu vàng khi hover */
+  color: #1a1a1a; /* Chữ đen để nổi trên nền vàng */
+}
+
+.sidebar-icon {
+  font-size: 1.2rem;
+  margin-right: 15px; /* Khoảng cách giữa icon và chữ */
+  min-width: 20px; /* Đảm bảo icon luôn hiển thị ngay cả khi sidebar đóng */
+}
+
+.sidebar-link span {
+  opacity: 0; /* Ẩn chữ mặc định */
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .sidebar-link span {
+  opacity: 1; /* Hiện chữ khi mở sidebar */
+}
+
+/* Hiệu ứng active (nếu muốn đánh dấu mục đang chọn) */
+.sidebar-link:active {
+  background: #f39c12; /* Màu vàng đậm hơn khi nhấn */
+}

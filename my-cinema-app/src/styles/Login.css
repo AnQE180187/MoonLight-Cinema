@@ -1,50 +1,102 @@
-/* Chỉ áp dụng cho trang Login */
+/* Login.css */
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: #fcff9a;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000, #2c3e50); /* Gradient tối, giống không gian rạp phim */
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.05); /* Nền trong suốt nhẹ */
+  backdrop-filter: blur(10px); /* Hiệu ứng mờ kính */
+  border-radius: 15px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); /* Bóng đổ nhẹ */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px); /* Hiệu ứng nâng lên khi hover */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.login-title {
+  color: #f1c40f; /* Màu vàng ánh đèn rạp phim */
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.7); /* Hiệu ứng glow */
+  animation: glow 2s infinite ease-in-out;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(241, 196, 15, 0.5); /* Hiệu ứng glow khi focus */
+  border: 1px solid #f1c40f;
+}
+
+.error-message {
+  color: #e74c3c; /* Màu đỏ cho lỗi */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background: #f1c40f; /* Màu vàng nổi bật */
+  border: none;
+  border-radius: 8px;
+  color: #1a1a1a;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-button:hover {
+  background: #f39c12; /* Màu vàng đậm hơn khi hover */
+  transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+  box-shadow: 0 0 15px rgba(241, 196, 15, 0.7);
+}
+
+.login-button:active {
+  transform: scale(0.98); /* Hiệu ứng nhấn xuống */
+}
+
+/* Animation cho tiêu đề */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
   }
-  
-  .login-card {
-    background: rgb(73, 70, 21);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 300px;
-    
+  50% {
+    text-shadow: 0 0 20px rgba(241, 196, 15, 0.8);
   }
-  
-  .login-title {
-    background: linear-gradient(45deg, #ffcc00, #ff9900);
-    padding: 10px;
-    border-radius: 5px 5px 0 0;
-    font-weight: bold;
+  100% {
+    text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
   }
-  
-  .login-input {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .login-button {
-    background: linear-gradient(45deg, #ffcc00, #ff9900);
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  .login-button:hover {
-    background-color: #2b8ab7;
-  }
+}

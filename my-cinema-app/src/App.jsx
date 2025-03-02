@@ -43,6 +43,15 @@ function App() {
               <Header onLogout={handleLogout} />
               <div className="d-flex">
                 <Sidebar />
+                <div
+                    className="p-3"
+                    style={{
+                      marginLeft: "60px", // Khoảng cách khi sidebar đóng
+                      transition: "margin-left 0.3s ease", // Hiệu ứng dịch chuyển
+                      position: "relative",
+                      zIndex: 900, // Dưới sidebar khi mở
+                    }}
+                  ></div>
                 <div className="p-3 flex-grow-1">
                   <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
