@@ -46,7 +46,7 @@ function App() {
                 <div
                     className="p-3"
                     style={{
-                      marginLeft: "60px", // Khoảng cách khi sidebar đóng
+                      marginLeft: "40px", // Khoảng cách khi sidebar đóng
                       transition: "margin-left 0.3s ease", // Hiệu ứng dịch chuyển
                       position: "relative",
                       zIndex: 900, // Dưới sidebar khi mở
