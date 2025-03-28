@@ -31,6 +31,9 @@ const Sidebar = () => {
         <Nav.Link as={Link} to="/schedule" className="sidebar-link">
           <FaCalendarAlt className="sidebar-icon" /> <span>Schedules</span>
         </Nav.Link>
+        <Nav.Link as={Link} to="/rooms" className="sidebar-link">
+          <FaTools className="sidebar-icon" /> <span>Rooms</span>
+        </Nav.Link>
         <Nav.Link as={Link} to="/order" className="sidebar-link">
           <FaShoppingCart className="sidebar-icon" /> <span>Orders</span>
         </Nav.Link>

@@ -14,6 +14,7 @@ import Product from "./pages/Products";
 import Customers from "./pages/Customers";
 import Equipment from "./pages/Equipment";
 import Employees from "./pages/Employees";
+import Rooms from "./pages/Rooms";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -58,6 +59,7 @@ function App() {
                     <Route path="/cinema" element={<Cinema />} />
                     <Route path="/movie" element={<Movie />} />
                     <Route path="/schedule" element={<Schedule />} />
+                    <Route path="/rooms" element={<Rooms />} />
                     <Route path="/order" element={<OrderPage />} />
                     <Route path="/ticket" element={<Ticket />} />
                     <Route path="/product" element={<Product />} />

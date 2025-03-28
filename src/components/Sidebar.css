@@ -19,6 +19,8 @@
   align-items: center;
   color: #000000; /* Màu chữ sáng */
   padding: 15px 20px;
+  
+  font-weight: bold;
   text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease;
   white-space: nowrap; /* Giữ chữ không xuống dòng */
